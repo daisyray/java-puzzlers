@@ -99,4 +99,10 @@ public class CodingPracticeOneTest {
         numbers.addAll(List.of(1,2,3,4,5));
         assertEquals(codingPracticeOne.rotateRightToNumber(numbers, 2), List.of(4,5,1,2,3));
     }
+    @Test
+    public void compressStringTest() {
+        String compressStr = codingPracticeOne.compressString(null);
+        assertNull(compressStr);
+        assertEquals(codingPracticeOne.compressString("bc"), "b1c1");
+    }
 }
