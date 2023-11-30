@@ -1,6 +1,10 @@
-package org.example;
+package ray.daisy.puzzlers;
+
+import ray.daisy.puzzlers.links.Node;
 
 import java.util.*;
+
+import static java.util.Collections.sort;
 
 public class CodingPracticeOne {
     // remove character from String
@@ -396,6 +400,65 @@ public class CodingPracticeOne {
         }
         return mergedArray;
     }
+    //determine if a string has all unique characters ( use set)
+    public boolean uniqueChars(String string) {
+        Set<String> uniqueChars = new HashSet<>();
+
+        for(int i = 0; i < string.length(); i++) {
+            char c = string.charAt(i);
+            uniqueChars.add(Character.toString(c));
+        }
+        return  string.length() == uniqueChars.size();
+    }
+    //give 2 strings, write a method to decide if one is a permutation of another ( use sort)
+    public boolean isPermutation(String string1, String string2) {
+        if ( string1 == null || string2 == null) {
+            return false;
+        }
+        int len1 = string1.length();
+        int len2 = string2.length();
+        if (len1 != len2) {
+            return false;
+        }
+        if (string1.equals(string2)) {
+            return true;
+        }
+        Map<Character, Integer> string1Map = frequencyCount(string1);
+        Map<Character, Integer> string2Map = frequencyCount(string2);
+        for ( Character c : string1Map.keySet()) {
+            if ( !string2Map.containsKey(c)) {
+                return false;
+            }
+            if ( string1Map.get(c) != string2Map.get(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    // find the sum from the give list of numbers
+    public boolean sumExists(List<Integer> numbers, int sum) {
+        if (numbers == null) {
+            return false;
+        }
+        int length = numbers.size();
+        Collections.sort(numbers);
+        if ( numbers.get(0) > sum) {
+            return false;
+        }
+        for(int i = 0; i < length-1; i++) {
+            int num1 = numbers.get(i);
+            int num2 = numbers.get(i + 1);
+            if ( num1 > sum || num2 > sum) {
+                return false;
+            }
+            int currentSum = num1 + num2;
+            if ( currentSum == sum) {
+                return true;
+            }
+        }
+        return false;
+
+    }
     public String compressString(String str) {
         if ((str == null) || (str.isBlank())) {
             return str;
@@ -417,6 +480,7 @@ public class CodingPracticeOne {
         newStr.append(compressionState.getRunningChar()).append(compressionState.getRunningCount());
         return newStr.toString();
     }
+
 }
 
 class CompressionState {
@@ -449,7 +513,3 @@ class CompressionState {
 }
 
 
-/*
-determine if a string has all unique characters ( use set)
-give 2 strings, write a method to decide if one is a permutation of another ( use sort)
- */

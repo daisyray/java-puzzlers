@@ -1,4 +1,4 @@
-package org.example;
+package ray.daisy.puzzlers;
 
 import org.testng.annotations.Test;
 

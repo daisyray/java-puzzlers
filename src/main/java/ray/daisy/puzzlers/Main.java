@@ -1,4 +1,4 @@
-package org.example;
+package ray.daisy.puzzlers;
 
 import java.util.*;
 
