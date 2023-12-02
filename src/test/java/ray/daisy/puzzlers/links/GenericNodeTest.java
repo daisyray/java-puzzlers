@@ -2,8 +2,8 @@ package ray.daisy.puzzlers.links;
 
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.*;
+import static org.testng.Assert.assertNull;
 
 public class GenericNodeTest {
     @Test
@@ -13,4 +13,5 @@ public class GenericNodeTest {
         assertEquals(genericNode.getValue(), "cat");
         assertEquals(genericNode.retreiveLastNode().getValue(), "bunny");
     }
+
 }

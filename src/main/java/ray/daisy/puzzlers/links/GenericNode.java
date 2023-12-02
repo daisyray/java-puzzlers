@@ -60,4 +60,53 @@ public class GenericNode<T> {
         }
         return head;
     }
+    public GenericNode<T> getAt(int index) {
+        GenericNode<T> temp = this;
+        int i = 0;
+        while (temp != null) {
+            if (i == index){
+                return temp;
+            }
+            i++;
+            temp = temp.getNext();
+        }
+        return null;
+    }
+    public GenericNode<T> search(T value) {
+        //find the value from the node else return null
+        GenericNode<T> temp = this;
+        while(temp != null) {
+            if (temp.getValue().equals(value)) {
+                return temp;
+            }
+            temp = temp.getNext();
+        }
+        return null;
+    }
+
+    public GenericNode<T> removeNode(T value) {
+        if (this.value == value) {
+            GenericNode<T> tempNext = this.getNext();
+            if (tempNext != null) {
+                tempNext.setPrevious(null);
+            }
+            return tempNext;
+        }
+        GenericNode<T> temp = this;
+        while (temp != null) {
+            if (temp.getValue().equals(value)) {
+                GenericNode<T> tempNext = temp.getNext();
+                if (tempNext != null) {
+                    tempNext.setPrevious(temp.getPrevious());
+                }
+                GenericNode<T> tempPrevious = temp.getPrevious();
+                if(tempPrevious != null) {
+                    tempPrevious.setNext(temp.getNext());
+                }
+                break;
+            }
+            temp = temp.getNext();
+        }
+        return this;
+    }
 }
