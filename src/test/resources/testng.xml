@@ -4,8 +4,9 @@
 <suite name="My suite" >
     <test name="All" >
         <packages>
-            <package   name="ray.daisy.puzzlers"></package>
-            <package name="ray.daisy.puzzlers.links"></package>
+            <package name="ray.daisy.puzzlers"></package>
+            <package name="ray.daisy.links"></package>
+            <package name="ray.daisy.xml"></package>
         </packages>
     </test>
 </suite>

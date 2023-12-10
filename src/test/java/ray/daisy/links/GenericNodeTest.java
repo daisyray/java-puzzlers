@@ -1,6 +1,7 @@
-package ray.daisy.puzzlers.links;
+package ray.daisy.links;
 
 import org.testng.annotations.Test;
+import ray.daisy.puzzlers.links.GenericNode;
 
 import static org.testng.Assert.*;
 import static org.testng.Assert.assertNull;
