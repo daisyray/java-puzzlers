@@ -1,7 +1,5 @@
 package ray.daisy.puzzlers;
 
-import ray.daisy.puzzlers.links.Node;
-
 import java.util.*;
 
 import static java.util.Collections.sort;
@@ -60,6 +58,9 @@ public class CodingPracticeOne {
 
     // reverse a string
     public String reverseString(String str) {
+        Scanner scanner = new Scanner(System.in);// takes input from user
+        String strToreverse = scanner.nextLine();
+
         StringBuilder reversedString = new StringBuilder();
         int strLength = str.length();
         for (int i = strLength - 1; i >= 0; i--) {
@@ -457,8 +458,44 @@ public class CodingPracticeOne {
             }
         }
         return false;
-
     }
+
+    public int[] twoSumNaive(int[] ar, int sum) {
+        for (int i = 0; i < ar.length; i++) {
+            for (int j = (i+1); j < ar.length; j++) {
+                if ( ar[i] + ar[j] == sum) {
+                    return new int[]{ i,j };
+                }
+            }
+        }
+        return new int[]{};
+    }
+
+    public int[] twoSumWithsort(int[] ar, int sum) {
+        Map<Integer, Integer> numberToIndex = new HashMap<>();
+        for (int i = 0; i < ar.length; i++) {
+            int key = ar[i];
+            numberToIndex.put(key, i);
+        }
+        Arrays.sort(ar);
+        for (int i = 0; i < ar.length; i++) {
+            int testElement = ar[i];
+            int difference = sum - testElement;
+            for(int j = i+1; j < ar.length; j++) {
+                int element = ar[j];
+                if ( element == difference) {
+                    int[]expectedIndexes = new int[]{numberToIndex.get(testElement), numberToIndex.get(element)};
+                    Arrays.sort(expectedIndexes);
+                    return expectedIndexes;
+                }
+                if (element > difference) {
+                    break;
+                }
+            }
+        }
+        return new int[]{};
+    }
+
     public String compressString(String str) {
         if ((str == null) || (str.isBlank())) {
             return str;
@@ -480,7 +517,25 @@ public class CodingPracticeOne {
         newStr.append(compressionState.getRunningChar()).append(compressionState.getRunningCount());
         return newStr.toString();
     }
-
+//    public String encrypt(String str, int numToEncrypt) {
+//        if ( str == null || str.length() ==0) {
+//            return str;
+//        }
+//        str = str.toLowerCase();
+//        String newString ;
+//        for(int i = 0; i < str.length(); i++) {
+//            char c = str.charAt(i);
+//            if(c != ' ') {
+//                if(c == 'z') {
+//                    c = 'b';
+//                } else if (c == 'y') {
+//                    c = 'a';
+//                } else {
+//                   // c = c + 2;
+//                }
+//            }
+//        }
+//    }
 }
 
 class CompressionState {

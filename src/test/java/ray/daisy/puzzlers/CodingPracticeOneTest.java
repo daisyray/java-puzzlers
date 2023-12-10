@@ -2,14 +2,12 @@ package ray.daisy.puzzlers;
 
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import ray.daisy.puzzlers.links.Node;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import static org.testng.Assert.*;
-import static ray.daisy.puzzlers.links.Node.createNodeList;
 
 public class CodingPracticeOneTest {
     CodingPracticeOne codingPracticeOne = new CodingPracticeOne();
@@ -126,5 +124,19 @@ public class CodingPracticeOneTest {
         assertTrue(codingPracticeOne.sumExists(numbers, 70));
         assertFalse(codingPracticeOne.sumExists(numbers, 700));
         assertFalse(codingPracticeOne.sumExists(numbers, 700));
+    }
+    @Test
+    public void twoSum() {
+        assertEquals(codingPracticeOne.twoSumNaive(new int[]{2, 7, 9, 11, 15},11), new int[]{0, 2});
+        assertEquals(codingPracticeOne.twoSumNaive(new int[]{2, 7, 9, 11, 15},100), new int[]{});
+        assertEquals(codingPracticeOne.twoSumNaive(new int[]{},100), new int[]{});
+        assertEquals(codingPracticeOne.twoSumNaive(new int[]{67},67), new int[]{});
+    }
+    @Test
+    public void twoSumWithsort() {
+        assertEquals(codingPracticeOne.twoSumWithsort(new int[]{100, 9, 7, 15, 2, 20},11), new int[]{1,4});
+        assertEquals(codingPracticeOne.twoSumWithsort(new int[]{20, 7, 9, 101, 15},100), new int[]{});
+        assertEquals(codingPracticeOne.twoSumWithsort(new int[]{},100), new int[]{});
+        assertEquals(codingPracticeOne.twoSumWithsort(new int[]{67},67), new int[]{});
     }
 }
